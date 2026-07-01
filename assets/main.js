@@ -97,20 +97,12 @@
   var heroPhoto = document.querySelector(".hero--dark .hero__photo");
 
   /* unified scroll handler — driven by native scroll OR Locomotive */
-  var lastY = 0;
   function applyScroll(y, limit) {
     if (nav) {
+      /* Island header: full-width bar at the top, floating pill once scrolled — always visible */
       nav.classList.toggle("scrolled", y > 20);
-      /* Island header: hide when scrolling down, reveal as a floating pill when scrolling up */
-      if (y <= 60) {
-        nav.classList.remove("nav--hidden");                 // at the top: full-width hero bar
-      } else if (y > lastY + 6 && y > 160) {
-        nav.classList.add("nav--hidden");                    // scrolling down -> tuck the island away
-      } else if (y < lastY - 6) {
-        nav.classList.remove("nav--hidden");                 // scrolling up -> bring the island back
-      }
+      nav.classList.remove("nav--hidden");
     }
-    lastY = y;
     var max = limit || (document.documentElement.scrollHeight - window.innerHeight);
     progress.style.width = (max > 0 ? Math.min(100, (y / max) * 100) : 0) + "%";
     if (heroPhoto && !reduceMotion) {

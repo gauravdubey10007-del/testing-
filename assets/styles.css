@@ -457,11 +457,12 @@ body::after{
 body.has-hero .nav.scrolled{
   background:transparent;border-bottom-color:transparent;box-shadow:none;
   -webkit-backdrop-filter:none;backdrop-filter:none;
+  padding-top:12px;                     /* float the island below the top edge (avoids margin-collapse) */
 }
 
 /* the island pill */
 .nav.scrolled .nav__inner{
-  margin:12px auto 0;
+  margin:0 auto;
   max-width:min(1080px,calc(100% - 28px));
   height:58px;
   padding-left:20px;padding-right:12px;
@@ -473,6 +474,3 @@ body.has-hero .nav.scrolled{
   box-shadow:0 16px 40px rgba(6,12,22,.22);
   transition:max-width .38s cubic-bezier(.22,.61,.36,1),height .38s,padding .38s,background .25s;
 }
-
-/* tucked away while scrolling down */
-.nav.nav--hidden{transform:translateY(-140%)}
